@@ -1,0 +1,75 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+
+<!-- <body>ddd</body> -->
+
+<body>
+	<img th:if="${charanum == 1}" src="./asset/YuMiNa.webp" alt="Image description">
+
+
+
+	<form method="post" action="/Result">
+		<input type="hidden" name="skillSpeedSet" value=20>
+		<button type="submit">잡스증</button>
+	</form>
+
+	<form method="post" action="/Result">
+		<input type="hidden" name="skillSpeedSet" value=16>
+		<input type="hidden" name="atackSpeedSet" value=16>
+		<button type="submit">블레이즈</button>
+	</form>
+
+	<form method="post" action="/Result">
+		<input type="hidden" name="skillSpeedSet" value=62>
+		<button type="submit">메스충 6T</button>
+	</form>
+
+	<form method="post" action="/Result">
+		<input type="hidden" name="SkillSpeedSet" value=72>
+		<button type="submit">메스충 7T</button>
+	</form>
+
+	<form method="post" action="/Result">
+		<input type="hidden" name="AtackSpeedSet" value=20>
+		<button type="submit">메공속 6T</button>
+	</form>
+
+	<details>
+		<summary>렐 공속</summary>
+		<form method="post" action="/Result">
+			총 공속을 입력해 주세요
+			<input type="text" name="AtackSpeedSet">
+			<button type="submit">계산</button>
+		</form>
+	</details>
+
+	<details>
+		<summary>렐 스충</summary>
+		<form method="post" action="/Result">
+			총 스충을 입력해 주세요
+			<input type="text" name="SkillSpeedSet">
+			<button type="submit">계산</button>
+		</form>
+	</details>
+	 
+	<form action="/Result" method="post">
+		핸즈 스충
+		<input type="text" name="skillSpeedHands">
+		케이스
+		<input type="text" name="skillSpeedCase">
+		보장1
+		<input type="text" name="skillSpeedMovement">
+		보장2
+		<input type="text" name="skillSpeedGear">
+		<input type="hidden" name="skillSpeedSet" value=20>
+		<button type="submit">계산</button>
+	</form>
+
+
+
+
+</html>
