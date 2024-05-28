@@ -21,7 +21,7 @@ public class MainController {
     @Autowired
     Repo_Eq_info eqRepo;
 
-    @GetMapping("/CC")
+    @GetMapping("/")
     public String CC() {
         return "Select";
     }
@@ -43,7 +43,7 @@ public class MainController {
     @PostMapping("/dduda")
     public String postMethodName(DtoChangeEq chageEq, DtoSelect sel) {
 // service.restart(sel, chageEq);
-        return "redirect:/CC";
+        return "redirect:/";
     }
 
 }
