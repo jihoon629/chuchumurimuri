@@ -43,9 +43,7 @@ public class MainController {
         service.change(chageEq);
         service.cal(chageEq, sel, model);
 
-        // 계산 후 데이터와 세션 초기화
         service.deleteDataByUserId(userId);
-
         session.invalidate();
         return "result";
     }

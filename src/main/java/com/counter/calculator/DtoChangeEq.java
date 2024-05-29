@@ -136,7 +136,7 @@ public class DtoChangeEq {
         return new EntityEqSubAttack(
                 this.atackSpeedHands,
                 this.atackSpeedCase,
-                this.skillSpeedMovement,
+                this.atackSpeedMovement,
                 this.atackSpeedGear);
     }
 

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
-
 @Service
 public class Serviec {
     @Autowired
@@ -37,24 +36,28 @@ public class Serviec {
         List<EntityEq> eqInfo = eqRepo.findByuserid(chageEq.getUserid());
 
         if (charaInfo.isEmpty() || eqInfo.isEmpty()) {
-           System.out.println("charaInfo or eqInfo is empty");
+            System.out.println("charaInfo or eqInfo is empty");
             return;
         }
 
-        double nomalAttackResult = nomalAttackResult(charaInfo, eqInfo);
-        double passiveskillResult = passiveskillResult(charaInfo, eqInfo, nomalAttackResult);
+        double[] eqResult = eqResult(eqInfo);
+
+        double nomalAttackResult = nomalAttackResult(charaInfo, eqResult[1]);
+        double passiveskillResult = passiveskillResult(charaInfo, eqResult[1], nomalAttackResult);
+
         double activeSkillResult;
         double ultSkillResult;
         if (charaInfo.get(0).getCharaNum() < 98) {
-            activeSkillResult = activeSkillResult(charaInfo, eqInfo);
-            ultSkillResult = ultSkillResult(charaInfo, eqInfo);
+            activeSkillResult = activeSkillResult(charaInfo, eqResult[0]);
+            ultSkillResult = ultSkillResult(charaInfo, eqResult[0]);
         } else {
-            activeSkillResult = activeSkillResultFury(charaInfo, eqInfo, nomalAttackResult);
-            ultSkillResult = ultSkillResultFury(charaInfo, eqInfo, nomalAttackResult);
+            activeSkillResult = activeSkillResultFury(charaInfo, nomalAttackResult);
+            ultSkillResult = ultSkillResultFury(charaInfo, nomalAttackResult);
         }
 
         model.addAttribute("nomalAttact", Math.round(charaInfo.get(0).getNomalAttack() * 10) / 10.0);
-        model.addAttribute("passiveSkill", Math.round(charaInfo.get(0).getPassiveskill() * charaInfo.get(0).getNomalAttack() * 10) / 10.0);
+        model.addAttribute("passiveSkill",
+                Math.round(charaInfo.get(0).getPassiveskill() * charaInfo.get(0).getNomalAttack() * 10) / 10.0);
         model.addAttribute("activeSkill", charaInfo.get(0).getActiveskill());
         model.addAttribute("ultSkill", charaInfo.get(0).getUltSkill());
         model.addAttribute("nomalAttackResult", Math.round(nomalAttackResult * 10) / 10.0);
@@ -64,36 +67,50 @@ public class Serviec {
         model.addAttribute("charanum", charaInfo.get(0).getCharaNum());
     }
 
-    public double nomalAttackResult(List<EntitySkill> charaInfo, List<EntityEq> eqInfo) {
-        return charaInfo.get(0).getNomalAttack() / (1 + (eqInfo.get(0).getAtackSpeedSet() * 0.01));
+
+
+    @Transactional
+    public void deleteDataByUserId(Long userId) {
+        eqRepo.deleteByUserid(userId);
+        skillRepo.deleteByUserid(userId);
     }
 
-    public double passiveskillResult(List<EntitySkill> charaInfo, List<EntityEq> eqInfo, double nomalAttackResult) {
+    public double nomalAttackResult(List<EntitySkill> charaInfo, double eqResult) {
+        return charaInfo.get(0).getNomalAttack() / (1 + (eqResult * 0.01));
+    }
+
+    public double passiveskillResult(List<EntitySkill> charaInfo, double eqResult, double nomalAttackResult) {
         if (charaInfo.get(0).getPassiveskill() == 0) {
             return 0;
         }
         return charaInfo.get(0).getPassiveskill() * nomalAttackResult;
     }
 
-    public double activeSkillResult(List<EntitySkill> charaInfo, List<EntityEq> eqInfo) {
-        return charaInfo.get(0).getActiveskill() / (1 + (eqInfo.get(0).getSkillSpeedSet() * 0.01));
+    public double activeSkillResult(List<EntitySkill> charaInfo, double eqResult) {
+        return charaInfo.get(0).getActiveskill() / (1 + (eqResult * 0.01));
     }
 
-    public double ultSkillResult(List<EntitySkill> charaInfo, List<EntityEq> eqInfo) {
-        return charaInfo.get(0).getUltSkill() / (1 + (eqInfo.get(0).getSkillSpeedSet() * 0.01));
+    public double ultSkillResult(List<EntitySkill> charaInfo, double eqResult) {
+        return charaInfo.get(0).getUltSkill() / (1 + (eqResult * 0.01));
     }
 
-    public double activeSkillResultFury(List<EntitySkill> charaInfo, List<EntityEq> eqInfo, double nomalAttackResult) {
+    public double activeSkillResultFury(List<EntitySkill> charaInfo, double nomalAttackResult) {
         return charaInfo.get(0).getActiveskill() * nomalAttackResult;
     }
 
-    public double ultSkillResultFury(List<EntitySkill> charaInfo, List<EntityEq> eqInfo, double nomalAttackResult) {
+    public double ultSkillResultFury(List<EntitySkill> charaInfo, double nomalAttackResult) {
         return charaInfo.get(0).getUltSkill() * nomalAttackResult;
     }
-    
-    @Transactional
-    public void deleteDataByUserId(Long userId) {
-        eqRepo.deleteByUserid(userId);
-        skillRepo.deleteByUserid(userId);
+
+
+    public double[] eqResult(List<EntityEq> eqInfo) {
+        double eqResultSkill = eqInfo.get(0).getSkillSpeedSet() + eqInfo.get(0).getSubSkill().getSkillSpeedHands()
+                + eqInfo.get(0).getSubSkill().getSkillSpeedCase() + eqInfo.get(0).getSubSkill().getSkillSpeedGear()
+                + eqInfo.get(0).getSubSkill().getSkillSpeedMovement();
+        double eqResultAttack = eqInfo.get(0).getAtackSpeedSet() + eqInfo.get(0).getSubAttack().getAtackSpeedHands()
+                + eqInfo.get(0).getSubAttack().getAtackSpeedCase() + eqInfo.get(0).getSubAttack().getAtackSpeedGear()
+                + eqInfo.get(0).getSubAttack().getAtackSpeedMovement();
+        return new double[] { eqResultSkill, eqResultAttack };
     }
+
 }
