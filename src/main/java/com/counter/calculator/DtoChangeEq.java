@@ -1,7 +1,7 @@
 package com.counter.calculator;
 
 public class DtoChangeEq {
-
+    public long userid;
     public Double skillSpeedSet = 0.0;
     public Double atackSpeedSet = 0.0;
     public Double skillSpeedHands = 0.0;
@@ -17,9 +17,11 @@ public class DtoChangeEq {
 
     }
 
-    public DtoChangeEq(Double skillSpeedSet, Double atackSpeedSet, Double skillSpeedHands, Double atackSpeedHands,
+    public DtoChangeEq(long userid, Double skillSpeedSet, Double atackSpeedSet, Double skillSpeedHands,
+            Double atackSpeedHands,
             Double skillSpeedCase, Double atackSpeedCase, Double skillSpeedMovement, Double atackSpeedMovement,
             Double skillSpeedGear, Double atackSpeedGear) {
+        this.userid = userid;
         this.skillSpeedSet = skillSpeedSet;
         this.atackSpeedSet = atackSpeedSet;
         this.skillSpeedHands = skillSpeedHands;
@@ -30,6 +32,14 @@ public class DtoChangeEq {
         this.atackSpeedMovement = atackSpeedMovement;
         this.skillSpeedGear = skillSpeedGear;
         this.atackSpeedGear = atackSpeedGear;
+    }
+
+    public long getUserid() {
+        return userid;
+    }
+
+    public void setUserid(long userid) {
+        this.userid = userid;
     }
 
     public Double getSkillSpeedSet() {
@@ -116,6 +126,7 @@ public class DtoChangeEq {
         EntityEq entityEq = new EntityEq();
         entityEq.setSkillSpeedSet(this.skillSpeedSet);
         entityEq.setAtackSpeedSet(this.atackSpeedSet);
+        entityEq.setUserid(this.userid);
         entityEq.setSubSkill(this.toSubSkillEntity());
         entityEq.setSubAttack(this.toSubAttackEntity());
         return entityEq;
@@ -126,17 +137,16 @@ public class DtoChangeEq {
                 this.atackSpeedHands,
                 this.atackSpeedCase,
                 this.skillSpeedMovement,
-                this.atackSpeedGear
-        );
+                this.atackSpeedGear);
     }
+
     private EntityEqSubSkill toSubSkillEntity() {
         return new EntityEqSubSkill(
                 this.skillSpeedHands,
                 this.skillSpeedCase,
                 this.skillSpeedMovement,
-                this.skillSpeedGear
-        );
+                this.skillSpeedGear);
 
-}
+    }
 
 }

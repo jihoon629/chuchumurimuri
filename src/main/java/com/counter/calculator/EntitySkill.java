@@ -13,6 +13,9 @@ public class EntitySkill {
     int id;
 
     @Column
+    long userid;
+
+    @Column
     int charaNum;
     @Column
     String charaName;
@@ -30,8 +33,9 @@ public class EntitySkill {
 
     }
 
-public EntitySkill(int charaNum, String charaName, double nomalAttack, int passiveskill, int activeskill, int ultSkill) {
+public EntitySkill(long userid,int charaNum, String charaName, double nomalAttack, int passiveskill, int activeskill, int ultSkill) {
     super();
+    this.userid = userid;
     this.charaNum = charaNum;
     this.charaName = charaName;
     this.nomalAttack = nomalAttack;
@@ -41,6 +45,13 @@ public EntitySkill(int charaNum, String charaName, double nomalAttack, int passi
 
 }
 
+public long getUserid() {
+    return userid;
+}
+
+public void setUserid(long userid) {
+    this.userid = userid;
+}
 
 
 public int getId() {
@@ -105,11 +116,10 @@ public EntitySkill toEntity() {
 
 @Override
 public String toString() {
-    return "EntitySkill [id=" + id + ", charaNum=" + charaNum + ", charaName=" + charaName + ", nomalAttack="
-            + nomalAttack + ", passiveskill=" + passiveskill + ", activeskill=" + activeskill + ", ultSkill=" + ultSkill
-            + "]";
+    return "EntitySkill [id=" + id + ", userid=" + userid + ", charaNum=" + charaNum + ", charaName=" + charaName
+            + ", nomalAttack=" + nomalAttack + ", passiveskill=" + passiveskill + ", activeskill=" + activeskill
+            + ", ultSkill=" + ultSkill + "]";
 }
-
 
 
 

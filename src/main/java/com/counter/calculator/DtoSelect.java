@@ -1,8 +1,8 @@
 package com.counter.calculator;
 
-
 public class DtoSelect {
 
+    public long userid;
     public int charaNum;
     public String charaName;
     public double nomalAttack;
@@ -11,10 +11,12 @@ public class DtoSelect {
     public int ultSkill;
 
     public DtoSelect() {
-        
+
     }
 
-    public DtoSelect(int charaNum, String charaName, double nomalAttack, int passiveskill, int activeskill, int ultSkill) {
+    public DtoSelect(long userid, int charaNum, String charaName, double nomalAttack, int passiveskill, int activeskill,
+            int ultSkill) {
+        this.userid = userid;
         this.charaNum = charaNum;
         this.charaName = charaName;
         this.nomalAttack = nomalAttack;
@@ -23,7 +25,14 @@ public class DtoSelect {
         this.ultSkill = ultSkill;
     }
 
+    public long getUserid() {
+        return userid;
+    }
 
+    public void setUserid(long userid) {
+
+        this.userid = userid;
+    }
 
     public int getCharaNum() {
         return charaNum;
@@ -80,20 +89,16 @@ public class DtoSelect {
     }
 
     public EntitySkill toEntity() {
-    
+
         return new EntitySkill(
-        this.charaNum,      
-        this.charaName, 
-        this.nomalAttack, 
-        this.passiveskill, 
-        this.activeskill, 
-        this.ultSkill
-        );
-     
+                this.userid,
+                this.charaNum,
+                this.charaName,
+                this.nomalAttack,
+                this.passiveskill,
+                this.activeskill,
+                this.ultSkill);
+
     }
 
-
-
-    
-    
 }

@@ -17,6 +17,9 @@ public class EntityEq {
     int id;
 
     @Column
+    long userid;
+
+    @Column
     Double skillSpeedSet;
     @Column
     Double atackSpeedSet;
@@ -32,11 +35,19 @@ public class EntityEq {
     public EntityEq() {
     }
 
-    public EntityEq(Double skillSpeedSet, Double atackSpeedSet) {
+    public EntityEq(long userid,Double skillSpeedSet, Double atackSpeedSet) {
         super();
+        this.userid = userid;
         this.skillSpeedSet = skillSpeedSet;
         this.atackSpeedSet = atackSpeedSet;
 
+    }
+    public long getUserid() {
+        return userid;
+    }
+
+    public void setUserid(long userid) {
+        this.userid = userid;
     }
 
     public int getId() {
@@ -79,10 +90,14 @@ public class EntityEq {
         this.subAttack = subAttack;
     }
 
+    
+
+
+
     @Override
     public String toString() {
-        return "EntityEq [id=" + id + ", skillSpeedSet=" + skillSpeedSet + ", atackSpeedSet=" + atackSpeedSet
-                + ", subSkill=" + subSkill + ", subAttack=" + subAttack + "]";
+        return "EntityEq [id=" + id + ", userid=" + userid + ", skillSpeedSet=" + skillSpeedSet + ", atackSpeedSet="
+                + atackSpeedSet + ", subSkill=" + subSkill + ", subAttack=" + subAttack + "]";
     }
 
     public EntityEq toEntityEq() {

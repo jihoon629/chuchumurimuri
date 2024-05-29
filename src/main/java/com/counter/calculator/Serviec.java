@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+
 
 @Service
 public class Serviec {
@@ -15,9 +17,9 @@ public class Serviec {
     Repo_Eq_info eqRepo;
 
     public void join(DtoSelect sel, Model model) {
+        long userId = sel.getUserid();
         skillRepo.save(sel.toEntity());
-
-        List<EntitySkill> charaInfo = skillRepo.siibal();
+        List<EntitySkill> charaInfo = skillRepo.findByuserid(userId);
         if (!charaInfo.isEmpty()) {
             model.addAttribute("charanum", charaInfo.get(0).getCharaNum());
         } else {
@@ -27,14 +29,15 @@ public class Serviec {
 
     public void change(DtoChangeEq chageEq) {
         eqRepo.save(chageEq.toEntityEq());
+
     }
 
     public void cal(DtoChangeEq chageEq, DtoSelect sel, Model model) {
-        List<EntitySkill> charaInfo = skillRepo.siibal();
-        List<EntityEq> eqInfo = eqRepo.siiballlll();
+        List<EntitySkill> charaInfo = skillRepo.findByuserid(sel.getUserid());
+        List<EntityEq> eqInfo = eqRepo.findByuserid(chageEq.getUserid());
 
         if (charaInfo.isEmpty() || eqInfo.isEmpty()) {
-            model.addAttribute("error", "캐릭터 또는 장비 정보가 없습니다.");
+           System.out.println("charaInfo or eqInfo is empty");
             return;
         }
 
@@ -59,11 +62,6 @@ public class Serviec {
         model.addAttribute("activeSkillResult", Math.round(activeSkillResult * 10) / 10.0);
         model.addAttribute("ultSkillResult", Math.round(ultSkillResult * 10) / 10.0);
         model.addAttribute("charanum", charaInfo.get(0).getCharaNum());
-    }
-
-    public void restart(DtoSelect sel, DtoChangeEq changeEq) {
-        skillRepo.deleteAllDataSkill();
-        eqRepo.deleteAllDataSkillEq();
     }
 
     public double nomalAttackResult(List<EntitySkill> charaInfo, List<EntityEq> eqInfo) {
@@ -92,10 +90,10 @@ public class Serviec {
     public double ultSkillResultFury(List<EntitySkill> charaInfo, List<EntityEq> eqInfo, double nomalAttackResult) {
         return charaInfo.get(0).getUltSkill() * nomalAttackResult;
     }
+    
+    @Transactional
+    public void deleteDataByUserId(Long userId) {
+        eqRepo.deleteByUserid(userId);
+        skillRepo.deleteByUserid(userId);
+    }
 }
-
-//     public double eqResult(List<EntityEq> eqInfo, List<EntityEqSubSkill> eqSubSkill) {
-//         double eqResultSkillSpeed = eqInfo.get(0).getSkillSpeedSet()+eqSubSkill.get(0).getSkillSpeedHands();
-//         return eqResultSkillSpeed;
-// }
-
