@@ -22,6 +22,7 @@
 </head>
 
 <body>
+    <img th:if="${charanum == 1}" src="./asset/YuMiNa.webp" alt="Image description">
     <h2>장비 정보 입력</h2>
     <form method="post" action="/Result">
         <input type="hidden" name="skillSpeedSet" value=20>
@@ -40,17 +41,17 @@
         <button type="submit">전당 공속</button>
     </form>
 
-    <form method="post" action="/Result">
+    <form method="post" action="/Result" class="maze">
         <input type="hidden" name="skillSpeedSet" value=62>
-        <button type="submit">메스충 6T</button>
+        <button type="submit"><img src="./asset/maze.png">메스충 6T</button>
     </form>
 
-    <form method="post" action="/Result">
+    <form method="post" action="/Result" class="maze">
         <input type="hidden" name="SkillSpeedSet" value=72>
         <button type="submit">메스충 7T</button>
     </form>
 
-    <form method="post" action="/Result">
+    <form method="post" action="/Result" class="maze">
         <input type="hidden" name="AtackSpeedSet" value=20>
         <button type="submit">메공속 6T</button>
     </form>
