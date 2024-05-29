@@ -21,7 +21,9 @@ public class MainController {
     Repo_Eq_info eqRepo;
 
     @GetMapping("/")
-    public String CC() {
+    public String CC(HttpSession session) {
+        session.invalidate();
+
         return "Select";
     }
 
@@ -36,15 +38,13 @@ public class MainController {
     @PostMapping("/Result")
     public String chageEq(DtoChangeEq chageEq, DtoSelect sel, Model model, HttpSession session) {
         Long userId = (Long) session.getAttribute("userId");
-       
+
         sel.setUserid(userId);
         chageEq.setUserid(userId);
 
         service.change(chageEq);
         service.cal(chageEq, sel, model);
 
-        service.deleteDataByUserId(userId);
-        session.invalidate();
         return "result";
     }
 
