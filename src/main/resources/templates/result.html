@@ -8,7 +8,23 @@
 </head>
 
 <body>
+    <script th:inline="javascript">
+        let chrapicnum = [[${ charanum }]];
+        let fileNames = ['설계미스', 'YuMiNa', 'YuNa', 'JooShiYoon', 'Horizon', 'Sigma', 'ChiFuyu', 'Eve', 'Kallen',
+            'LEESOOYEON', 'SEOYOON', 'MINISTRA', 'ANTONOV', 'REGINA', 'MAVKA',
+            'HILDE', 'NAYUBIN', 'REPLACERKING', 'EVOLVE001','JAKEWALKER', 'RAY', 'ECCLESIA',
+            'REPLACERQUEEN', 'AMYFIRSTWING', 'CURIAN', 'ROSARIALEFRIEDE', 'MORDRED',
+            'LEEJISOO', 'SHINJIA', 'LYUDMILA', 'CHRISTINABRECHT',
+            'ALICE', 'Shperd&Lurcher', 'KARIN'];
 
+        window.onload = function () {
+            const img = document.createElement('img');
+            img.src = `./asset/${fileNames[chrapicnum]}.webp`;
+            img.alt = fileNames[chrapicnum];
+            document.getElementById('imageContainer').appendChild(img);
+        }
+
+    </script>
     <table>
         <tr>
             <th></th>
@@ -16,15 +32,7 @@
         </tr>
         <tr>
             <td>
-                <img th:if="${charanum == 1}" src="./asset/YuMiNa.webp" alt="Image description">
-                <img th:if="${charanum == 2}" src="./asset/YuNa.webp" alt="윾나">
-                <img th:if="${charanum == 3}" src="./asset/JooShiYoon.webp" alt="주시윤">
-                <img th:if="${charanum == 4}" src="./asset/Horizon.webp" alt="깡우">
-                <img th:if="${charanum == 5}" src="./asset/Sigma.webp" alt="자딸미깡">
-                <img th:if="${charanum == 6}" src="./asset/ChiFuyu.webp" alt="치아가">
-                <img th:if="${charanum == 7}" src="./asset/Eve.webp" alt="">
-                <img th:if="${charanum == 98}" src="./asset/Shperd&Lurcher.webp" alt="">
-                <img th:if="${charanum == 9}" src="./asset/Kallen.webp" alt="">
+                <div id="imageContainer"></div>
             </td>
             <td>
                 <table>
