@@ -1,75 +1,237 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
 
 <head>
-	<meta charset="UTF-8">
-	<title>Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장비 정보 입력</title>
+    <link rel="stylesheet" href="src/main/resources/templates/chageEq.css">
+    <script>
+        function updateInputName(group) {
+            const skillRadio = document.getElementById(`skillRadio${group}`);
+            const atackRadio = document.getElementById(`atackRadio${group}`);
+            const inputField = document.getElementById(`input${group}`);
+
+            if (skillRadio.checked) {
+                inputField.name = `skillSpeed${group}`;
+            } else if (atackRadio.checked) {
+                inputField.name = `atackSpeed${group}`;
+            }
+        }
+    </script>
 </head>
 
-<!-- <body>ddd</body> -->
-
 <body>
-	<img th:if="${charanum == 1}" src="./asset/YuMiNa.webp" alt="Image description">
+    <h2>장비 정보 입력</h2>
+    <form method="post" action="/Result">
+        <input type="hidden" name="skillSpeedSet" value=20>
+        <button type="submit">잡스증</button>
+    </form>
 
+    <form method="post" action="/Result">
+        <input type="hidden" name="skillSpeedSet" value=16>
+        <input type="hidden" name="atackSpeedSet" value=0>
+        <button type="submit">전덩 스충</button>
+    </form>
 
+    <form method="post" action="/Result">
+        <input type="hidden" name="skillSpeedSet" value=0>
+        <input type="hidden" name="atackSpeedSet" value=16>
+        <button type="submit">전당 공속</button>
+    </form>
 
-	<form method="post" action="/Result">
-		<input type="hidden" name="skillSpeedSet" value=20>
-		<button type="submit">잡스증</button>
-	</form>
+    <form method="post" action="/Result">
+        <input type="hidden" name="skillSpeedSet" value=62>
+        <button type="submit">메스충 6T</button>
+    </form>
 
-	<form method="post" action="/Result">
-		<input type="hidden" name="skillSpeedSet" value=16>
-		<input type="hidden" name="atackSpeedSet" value=16>
-		<button type="submit">블레이즈</button>
-	</form>
+    <form method="post" action="/Result">
+        <input type="hidden" name="SkillSpeedSet" value=72>
+        <button type="submit">메스충 7T</button>
+    </form>
 
-	<form method="post" action="/Result">
-		<input type="hidden" name="skillSpeedSet" value=62>
-		<button type="submit">메스충 6T</button>
-	</form>
+    <form method="post" action="/Result">
+        <input type="hidden" name="AtackSpeedSet" value=20>
+        <button type="submit">메공속 6T</button>
+    </form>
 
-	<form method="post" action="/Result">
-		<input type="hidden" name="SkillSpeedSet" value=72>
-		<button type="submit">메스충 7T</button>
-	</form>
+    <details>
+        <summary>빠른 입력 공속</summary>
+        <form method="post" action="/Result">
+            총 공속을 입력해 주세요
+            <input type="number" name="AtackSpeedSet" min=0 step=0.1>
+            <button type="submit">계산</button>
+        </form>
+    </details>
 
-	<form method="post" action="/Result">
-		<input type="hidden" name="AtackSpeedSet" value=20>
-		<button type="submit">메공속 6T</button>
-	</form>
+    <details>
+        <summary>빠른 입력 스충</summary>
+        <form method="post" action="/Result">
+            총 스충을 입력해 주세요
+            <input type="number" name="SkillSpeedSet" min=0 step=0.1>
+            <button type="submit">계산</button>
+        </form>
+    </details>
 
-	<details>
-		<summary>렐 공속</summary>
-		<form method="post" action="/Result">
-			총 공속을 입력해 주세요
-			<input type="text" name="AtackSpeedSet">
-			<button type="submit">계산</button>
-		</form>
-	</details>
+    <details>
+        <summary>스충</summary>
+        <form action="/Result" method="post">
+            <!-- 핸즈 -->
+            <div>
+                <label>핸즈</label>
+                <input type="radio" id="skillRadioHands" name="handsOption" value="skill" onclick="updateInputName('Hands')" checked> 스킬 충전 속도
+                <input type="radio" id="atackRadioHands" name="handsOption" value="atack" onclick="updateInputName('Hands')"> 공격 속도
+                <input type="number" id="inputHands" name="skillSpeedHands" value="0.0" min="0" step="0.1">
+            </div>
 
-	<details>
-		<summary>렐 스충</summary>
-		<form method="post" action="/Result">
-			총 스충을 입력해 주세요
-			<input type="text" name="SkillSpeedSet">
-			<button type="submit">계산</button>
-		</form>
-	</details>
-	 
-	<form action="/Result" method="post">
-		핸즈 스충
-		<input type="text" name="skillSpeedHands">
-		케이스
-		<input type="text" name="skillSpeedCase">
-		보장1
-		<input type="text" name="skillSpeedMovement">
-		보장2
-		<input type="text" name="skillSpeedGear">
-		<input type="hidden" name="skillSpeedSet" value=20>
-		<button type="submit">계산</button>
-	</form>
+            <!-- 케이스 -->
+            <div>
+                <label>케이스</label>
+                <input type="radio" id="skillRadioCase" name="caseOption" value="skill" onclick="updateInputName('Case')" checked> 스킬 충전 속도
+                <input type="radio" id="atackRadioCase" name="caseOption" value="atack" onclick="updateInputName('Case')"> 공격 속도
+                <input type="number" id="inputCase" name="skillSpeedCase" value="0.0" min="0" step="0.1">
+            </div>
 
+            <!-- 보장1 -->
+            <div>
+                <label>보장1</label>
+                <input type="radio" id="skillRadioMovement" name="movementOption" value="skill" onclick="updateInputName('Movement')" checked> 스킬 충전 속도
+                <input type="radio" id="atackRadioMovement" name="movementOption" value="atack" onclick="updateInputName('Movement')"> 공격 속도
+                <input type="number" id="inputMovement" name="skillSpeedMovement" value="0.0" min="0" step="0.1">
+            </div>
 
+            <!-- 보장2 -->
+            <div>
+                <label>보장2</label>
+                <input type="radio" id="skillRadioGear" name="gearOption" value="skill" onclick="updateInputName('Gear')" checked> 스킬 충전 속도
+                <input type="radio" id="atackRadioGear" name="gearOption" value="atack" onclick="updateInputName('Gear')"> 공격 속도
+                <input type="number" id="inputGear" name="skillSpeedGear" value="0.0" min="0" step="0.1">
+            </div>
 
+            <input type="hidden" name="skillSpeedSet" value="20">
+            <button type="submit">계산</button>
+        </form>
+    </details>
+
+    <details>
+        <summary>공속</summary>
+        <form action="/Result" method="post">
+            <!-- 핸즈 -->
+            <div>
+                <label>핸즈</label>
+                <input type="radio" id="skillRadioHands" name="handsOption" value="skill" onclick="updateInputName('Hands')"> 스킬 충전 속도
+                <input type="radio" id="atackRadioHands" name="handsOption" value="atack" onclick="updateInputName('Hands')" checked> 공격 속도
+                <input type="number" id="inputHands" name="skillSpeedHands" value="0.0" min="0" step="0.1">
+            </div>
+
+            <!-- 케이스 -->
+            <div>
+                <label>케이스</label>
+                <input type="radio" id="skillRadioCase" name="caseOption" value="skill" onclick="updateInputName('Case')"> 스킬 충전 속도
+                <input type="radio" id="atackRadioCase" name="caseOption" value="atack" onclick="updateInputName('Case')" checked> 공격 속도
+                <input type="number" id="inputCase" name="skillSpeedCase" value="0.0" min="0" step="0.1">
+            </div>
+
+            <!-- 보장1 -->
+            <div>
+                <label>보장1</label>
+                <input type="radio" id="skillRadioMovement" name="movementOption" value="skill" onclick="updateInputName('Movement')"> 스킬 충전 속도
+                <input type="radio" id="atackRadioMovement" name="movementOption" value="atack" onclick="updateInputName('Movement')" checked> 공격 속도
+                <input type="number" id="inputMovement" name="skillSpeedMovement" value="0.0" min="0" step="0.1">
+            </div>
+
+            <!-- 보장2 -->
+            <div>
+                <label>보장2</label>
+                <input type="radio" id="skillRadioGear" name="gearOption" value="skill" onclick="updateInputName('Gear')"> 스킬 충전 속도
+                <input type="radio" id="atackRadioGear" name="gearOption" value="atack" onclick="updateInputName('Gear')" checked> 공격 속도
+                <input type="number" id="inputGear" name="skillSpeedGear" value="0.0" min="0" step="0.1">
+            </div>
+
+            <input type="hidden" name="AtackSpeedSet" value="20">
+            <button type="submit">계산</button>
+        </form>
+    </details>
+
+    <details>
+        <summary>전당 공속</summary>
+        <form action="/Result" method="post">
+            <!-- 핸즈 -->
+            <div>
+                <label>핸즈</label>
+                <input type="radio" id="skillRadioHands" name="handsOption" value="skill" onclick="updateInputName('Hands')"> 스킬 충전 속도
+                <input type="radio" id="atackRadioHands" name="handsOption" value="atack" onclick="updateInputName('Hands')" checked> 공격 속도
+                <input type="number" id="inputHands" name="skillSpeedHands" value="0.0" min="0" step="0.1">
+            </div>
+
+            <!-- 케이스 -->
+            <div>
+                <label>케이스</label>
+                <input type="radio" id="skillRadioCase" name="caseOption" value="skill" onclick="updateInputName('Case')"> 스킬 충전 속도
+                <input type="radio" id="atackRadioCase" name="caseOption" value="atack" onclick="updateInputName('Case')" checked> 공격 속도
+                <input type="number" id="inputCase" name="skillSpeedCase" value="0.0" min="0" step="0.1">
+            </div>
+
+            <!-- 보장1 -->
+            <div>
+                <label>보장1</label>
+                <input type="radio" id="skillRadioMovement" name="movementOption" value="skill" onclick="updateInputName('Movement')"> 스킬 충전 속도
+                <input type="radio" id="atackRadioMovement" name="movementOption" value="atack" onclick="updateInputName('Movement')" checked> 공격 속도
+                <input type="number" id="inputMovement" name="skillSpeedMovement" value="0.0" min="0" step="0.1">
+            </div>
+
+            <!-- 보장2 -->
+            <div>
+                <label>보장2</label>
+                <input type="radio" id="skillRadioGear" name="gearOption" value="skill" onclick="updateInputName('Gear')"> 스킬 충전 속도
+                <input type="radio" id="atackRadioGear" name="gearOption" value="atack" onclick="updateInputName('Gear')" checked> 공격 속도
+                <input type="number" id="inputGear" name="skillSpeedGear" value="0.0" min="0" step="0.1">
+            </div>
+
+            <input type="hidden" name="AtackSpeedSet" value="16">
+            <button type="submit">계산</button>
+        </form>
+    </details>
+
+    <details>
+        <summary>전당 스충</summary>
+        <form action="/Result" method="post">
+            <!-- 핸즈 -->
+            <div>
+                <label>핸즈</label>
+                <input type="radio" id="skillRadioHands" name="handsOption" value="skill" onclick="updateInputName('Hands')" checked> 스킬 충전 속도
+                <input type="radio" id="atackRadioHands" name="handsOption" value="atack" onclick="updateInputName('Hands')"> 공격 속도
+                <input type="number" id="inputHands" name="skillSpeedHands" value="0.0" min="0" step="0.1">
+            </div>
+
+            <!-- 케이스 -->
+            <div>
+                <label>케이스</label>
+                <input type="radio" id="skillRadioCase" name="caseOption" value="skill" onclick="updateInputName('Case')" checked> 스킬 충전 속도
+                <input type="radio" id="atackRadioCase" name="caseOption" value="atack" onclick="updateInputName('Case')"> 공격 속도
+                <input type="number" id="inputCase" name="skillSpeedCase" value="0.0" min="0" step="0.1">
+            </div>
+
+            <!-- 보장1 -->
+            <div>
+                <label>보장1</label>
+                <input type="radio" id="skillRadioMovement" name="movementOption" value="skill" onclick="updateInputName('Movement')" checked> 스킬 충전 속도
+                <input type="radio" id="atackRadioMovement" name="movementOption" value="atack" onclick="updateInputName('Movement')"> 공격 속도
+                <input type="number" id="inputMovement" name="skillSpeedMovement" value="0.0" min="0" step="0.1">
+            </div>
+
+            <!-- 보장2 -->
+            <div>
+                <label>보장2</label>
+                <input type="radio" id="skillRadioGear" name="gearOption" value="skill" onclick="updateInputName('Gear')" checked> 스킬 충전 속도
+                <input type="radio" id="atackRadioGear" name="gearOption" value="atack" onclick="updateInputName('Gear')"> 공격 속도
+                <input type="number" id="inputGear" name="skillSpeedGear" value="0.0" min="0" step="0.1">
+            </div>
+
+            <input type="hidden" name="skillSpeedSet" value="20">
+            <button type="submit">계산</button>
+        </form>
+    </details>
+</body>
 
 </html>
