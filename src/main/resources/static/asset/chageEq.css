@@ -7,21 +7,24 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    background-color: #000; /* 배경을 검정색으로 설정 */
+    color: #fff; /* 텍스트를 흰색으로 설정 */
 }
 
 form {
     width: 100%;
     max-width: 400px;
     margin-bottom: 20px;
-    background: #f9f9f9;
+    background: #333; /* 배경을 어두운 회색으로 설정 */
     padding: 15px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* 흰색 그림자 */
 }
 
 label {
     display: block;
     margin-top: 10px;
+    color: #fff; /* 레이블 텍스트를 흰색으로 설정 */
 }
 
 input[type="number"],
@@ -31,6 +34,10 @@ button {
     margin-top: 5px;
     margin-bottom: 10px;
     font-size: 16px;
+    background: #444; /* 배경을 중간 회색으로 설정 */
+    border: 1px solid #555; /* 경계를 어두운 회색으로 설정 */
+    color: #fff; /* 텍스트를 흰색으로 설정 */
+    border-radius: 5px;
 }
 
 input[type="radio"] {
@@ -54,14 +61,16 @@ details {
     max-width: 400px;
     margin-bottom: 20px;
     padding: 10px;
-    background: #f9f9f9;
+    background: #333; /* 배경을 어두운 회색으로 설정 */
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* 흰색 그림자 */
+    color: #fff; /* 텍스트를 흰색으로 설정 */
 }
 
 summary {
     font-weight: bold;
     cursor: pointer;
+    color: #fff; /* 요약 텍스트를 흰색으로 설정 */
 }
 
 summary::-webkit-details-marker {
