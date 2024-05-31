@@ -15,7 +15,7 @@ public class MainController {
     Repo_Skill_Info skillRepo;
 
     @Autowired
-    Serviec service;
+    ServiecController service;
 
     @Autowired
     Repo_Eq_info eqRepo;
