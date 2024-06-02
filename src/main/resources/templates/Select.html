@@ -1,15 +1,88 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html  xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./asset/select.css">
-    <title>Document</title>
+    <title>CC</title>
 
 </head>
 
 <body>
+    <script th:inline="javascript">
+        function showClass(className) {
+            const classes = ['striker', 'ranger', 'defender', 'sniper', 'supporter'];
+            classes.forEach(c => {
+                document.getElementById(c).classList.add('hidden');
+            });
+            document.getElementById(className).classList.remove('hidden');
+        }
+
+
+        let chrapicnum =[[${charanum}]];
+       if(chrapicnum>97){
+            chrapicnum = chrapicnum-66;
+            
+        }
+        let fileNames = ['설계미스', 'YuMiNa', 'YuNa', 'JooShiYoon', 'Horizon', 'Sigma', 'ChiFuyu', 'Eve', 'Kallen',
+            'LEESOOYEON', 'SEOYOON', 'MINISTRA', 'ANTONOV', 'REGINA', 'MAVKA',
+            'HILDE', 'NAYUBIN', 'REPLACERKING','EVOLVE001', 'JAKEWALKER', 'RAY', 'ECCLESIA',
+            'REPLACERQUEEN', 'AMYFIRSTWING', 'CURIAN', 'ROSARIALEFRIEDE', 'MORDRED',
+            'LEEJISOO', 'SHINJIA', 'LYUDMILA', 'CHRISTINABRECHT',
+            'ALICE', 'Shperd&Lurcher', 'KARIN'];       
+        window.onload = function() {
+        const img = document.createElement('img');
+        img.src = `./asset/${fileNames[chrapicnum]}.webp`;
+        img.alt = fileNames[chrapicnum];
+        document.getElementById('imageContainer').appendChild(img); 
+
+    };
+
+
+    </script>
+
+
+
+<h1>CC</h1>
+<table class="JAIL">
+    <tr >
+        <td>4밴</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>3밴</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2밴</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>1밴</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+
+
+
+
 
     <div class="class-container">
         <div class="class-button" onclick="showClass('striker')">스트라이커</div>
@@ -26,7 +99,7 @@
                     <form method="post" action="/ChangeEq">
                         <input type="hidden" name="charaNum" value="1">
                         <input type="hidden" name="charaName" value="유미나">
-                        <input type="hidden" name="nomalAttack" value="1.36">
+                        <input type="hidden" name="nomalAttack" value="1.97">
                         <input type="hidden" name="passiveskill" value="3">
                         <input type="hidden" name="activeskill" value="18">
                         <input type="hidden" name="ultSkill" value="52">
@@ -382,7 +455,7 @@
                         <input type="hidden" name="CharaNum" value="27">
                         <input type="hidden" name="CharaName" value="이지수">
                         <input type="hidden" name="NomalAttack" value="1">
-                        <input type="hidden" name="Passiveskill" value="0">
+                        <input type=bittern"hidden" name="Passiveskill" value="0">
                         <input type="hidden" name="Activeskill" value="24">
                         <input type="hidden" name="UltSkill" value="46">
                         <button type="submit" id="aw30"><img src="./asset/LEEJISOO.webp" alt="">혐지수</button>
@@ -429,15 +502,7 @@
     </table>
 
 
-    <script>
-        function showClass(className) {
-            const classes = ['striker', 'ranger', 'defender', 'sniper', 'supporter'];
-            classes.forEach(c => {
-                document.getElementById(c).classList.add('hidden');
-            });
-            document.getElementById(className).classList.remove('hidden');
-        }
-    </script>
+  
 </body>
 
 </html>

@@ -82,11 +82,22 @@
                             <p th:text="${ultSkillResult}"></p>
                         </td>
                     </tr>
-
                 </table>
             </td>
         </tr>
     </table>
+    30초 기준 <br>
+    평타
+<p th:text="${normalAttackCount}"></p>
+강평
+<p th:text="${passiveSkillCount}"></p>
+특수기
+<p th:text="${activeSkillCount}"></p>
+궁극기
+<p th:text="${ultSkillCount}"></p>
+
+
+
     <form action="dduda" method="post">
         <button type="submit">돌아가기</button>
     </form>
