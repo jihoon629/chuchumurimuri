@@ -11,16 +11,16 @@ public class EntityEqSubSkill {
     
  @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
+    private   int id;
 
     @Column
-    Double skillSpeedHands;
+    private    Double skillSpeedHands;
     @Column
-    Double skillSpeedCase;
+    private   Double skillSpeedCase;
     @Column
-    Double skillSpeedMovement;
+    private   Double skillSpeedMovement;
     @Column
-    Double skillSpeedGear;
+    private  Double skillSpeedGear;
 
     public EntityEqSubSkill() {
     }

@@ -10,23 +10,23 @@ import jakarta.persistence.Id;
 public class EntitySkill {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
+    private   int id;
 
     @Column
-    long userid;
+    private   long userid;
 
     @Column
-    int charaNum;
+    private  int charaNum;
     @Column
-    String charaName;
+    private String charaName;
     @Column
-    double nomalAttack;
+    private  double nomalAttack;
     @Column
-    int passiveskill;
+    private  int passiveskill;
     @Column
-    int activeskill;
+    private  int activeskill;
     @Column
-    int ultSkill;
+    private  int ultSkill;
 
 
     public EntitySkill() {

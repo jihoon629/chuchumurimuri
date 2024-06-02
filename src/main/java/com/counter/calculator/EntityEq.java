@@ -14,23 +14,23 @@ public class EntityEq {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
+    private int id;
 
     @Column
-    long userid;
+    private long userid;
 
     @Column
-    Double skillSpeedSet;
+    private Double skillSpeedSet;
     @Column
-    Double atackSpeedSet;
+    private Double atackSpeedSet;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "sub_skill_id", referencedColumnName = "id")
-    public EntityEqSubSkill subSkill;
+    private EntityEqSubSkill subSkill;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "sub_attack_id", referencedColumnName = "id")
-    public EntityEqSubAttack subAttack;
+    private EntityEqSubAttack subAttack;
 
     public EntityEq() {
     }

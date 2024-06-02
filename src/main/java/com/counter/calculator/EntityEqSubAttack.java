@@ -11,17 +11,17 @@ public class EntityEqSubAttack {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
+    private  int id;
 
 
     @Column
-    Double atackSpeedHands;
+    private Double atackSpeedHands;
     @Column
-    Double atackSpeedCase;
+    private  Double atackSpeedCase;
     @Column
-    Double atackSpeedMovement;
+    private  Double atackSpeedMovement;
     @Column
-    Double atackSpeedGear;
+    private  Double atackSpeedGear;
 
     public EntityEqSubAttack() {
     }
