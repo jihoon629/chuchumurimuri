@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -20,65 +20,13 @@
         }
 
 
-        let chrapicnum =[[${charanum}]];
-       if(chrapicnum>97){
-            chrapicnum = chrapicnum-66;
-            
-        }
-        let fileNames = ['설계미스', 'YuMiNa', 'YuNa', 'JooShiYoon', 'Horizon', 'Sigma', 'ChiFuyu', 'Eve', 'Kallen',
-            'LEESOOYEON', 'SEOYOON', 'MINISTRA', 'ANTONOV', 'REGINA', 'MAVKA',
-            'HILDE', 'NAYUBIN', 'REPLACERKING','EVOLVE001', 'JAKEWALKER', 'RAY', 'ECCLESIA',
-            'REPLACERQUEEN', 'AMYFIRSTWING', 'CURIAN', 'ROSARIALEFRIEDE', 'MORDRED',
-            'LEEJISOO', 'SHINJIA', 'LYUDMILA', 'CHRISTINABRECHT',
-            'ALICE', 'Shperd&Lurcher', 'KARIN'];       
-        window.onload = function() {
-        const img = document.createElement('img');
-        img.src = `./asset/${fileNames[chrapicnum]}.webp`;
-        img.alt = fileNames[chrapicnum];
-        document.getElementById('imageContainer').appendChild(img); 
-
-    };
-
 
     </script>
 
 
 
-<h1>CC</h1>
-<table class="JAIL">
-    <tr >
-        <td>4밴</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>3밴</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>2밴</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1밴</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-</table>
+    <h1>CC</h1>
+
 
 
 
@@ -341,8 +289,8 @@
                         <input type="hidden" name="Passiveskill" value="0">
                         <input type="hidden" name="Activeskill" value="26">
                         <input type="hidden" name="UltSkill" value="56">
-                    <button type="submit" id="aw21"><img src="./asset/EVOLVE001.webp" alt="">이볼브</button>
-                </form>
+                        <button type="submit" id="aw21"><img src="./asset/EVOLVE001.webp" alt="">이볼브</button>
+                    </form>
                 </td>
                 <td>
                     <form method="post" action="/ChangeEq">
@@ -415,7 +363,8 @@
                         <input type="hidden" name="Passiveskill" value="0">
                         <input type="hidden" name="Activeskill" value="25">
                         <input type="hidden" name="UltSkill" value="62">
-                        <button type="submit" id="aw27"><img src="./asset/CURIAN.webp" alt="">자기를 큐리안이라고 생각 하는사람</button>
+                        <button type="submit" id="aw27"><img src="./asset/CURIAN.webp" alt="">자기를 큐리안이라고 생각
+                            하는사람</button>
                     </form>
                 </td>
                 <td>
@@ -502,7 +451,7 @@
     </table>
 
 
-  
+
 </body>
 
 </html>
