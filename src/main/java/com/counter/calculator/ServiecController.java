@@ -61,6 +61,7 @@ public class ServiecController {
         }
 
         double[] dealtime = charaMecanism.calculateDealTime(charaInfo, eqInfo, 30);
+        
         System.out.println("30초 동안 평타 사용 횟수: " + dealtime[0]);
         System.out.println("30초 동안 패시브 사용 횟수: " + dealtime[1]);
         System.out.println("30초 동안 특수기 사용 횟수: " + dealtime[2]);
