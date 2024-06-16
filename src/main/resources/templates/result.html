@@ -4,102 +4,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Character Information</title>
-    <link rel="stylesheet" href="./asset/result.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="./asset/styles.css?version=1">
 </head>
 
 <body>
-    <script th:inline="javascript">
-        let chrapicnum = [[${ charanum }]];
-        if(chrapicnum > 96) {
-            chrapicnum = chrapicnum - 66;
-        }
-        let fileNames = [
-            '설계미스', 'YuMiNa', 'YuNa', 'JooShiYoon', 'Horizon', 'Sigma', 'ChiFuyu', 'Eve', 'Kallen',
-            'LEESOOYEON', 'SEOYOON', 'MINISTRA', 'ANTONOV', 'REGINA', 'MAVKA', 'HILDE', 'NAYUBIN',
-            'REPLACERKING', 'EVOLVE001','JAKEWALKER', 'RAY', 'ECCLESIA', 'REPLACERQUEEN', 'AMYFIRSTWING',
-            'CURIAN', 'ROSARIALEFRIEDE', 'MORDRED', 'LEEJISOO', 'SHINJIA', 'LYUDMILA', 'CHRISTINABRECHT',
-            'ALICE', 'Shperd&Lurcher', 'KARIN'
-        ];
-        window.onload = function () {
-            const img = document.createElement('img');
-            img.src = `./asset/${fileNames[chrapicnum]}.webp`;
-            img.alt = fileNames[chrapicnum];
-            document.getElementById('imageContainer').appendChild(img);
-            const name = document.createElement('h2');
-            name.textContent = fileNames[chrapicnum];
-            document.getElementById('imageContainer').prepend(name);
-        }
-    </script>
+    <div class="content">
+        <script th:inline="javascript">
+            let chrapicnum = [[${ charanum }]];
+            if (chrapicnum > 96) {
+                chrapicnum = chrapicnum - 66;
+            }
+            let fileNames = ['설계미스', 'YuMiNa', 'YuNa', 'JooShiYoon', 'Horizon', 'Sigma', 'ChiFuyu', 'Eve', 'Kallen',
+                'LEESOOYEON', 'SEOYOON', 'MINISTRA', 'ANTONOV', 'REGINA', 'MAVKA',
+                'HILDE', 'NAYUBIN', 'REPLACERKING', 'EVOLVE001', 'JAKEWALKER', 'RAY', 'ECCLESIA',
+                'REPLACERQUEEN', 'AMYFIRSTWING', 'CURIAN', 'ROSARIALEFRIEDE', 'MORDRED',
+                'LEEJISOO', 'SHINJIA', 'LYUDMILA', 'CHRISTINABRECHT',
+                'ALICE', 'Shperd&Lurcher', 'KARIN'];
 
-    <h1>Character Information</h1>
-    <div class="result-container">
-        <div class="top-section">
-            <div class="image-section" id="imageContainer"></div>
-            <div class="info-section">
-                <table class="attribute-table">
-                    <tr>
-                        <th>Attribute</th>
-                        <th>Value</th>
-                        <th>Result</th>
-                    </tr>
-                    <tr>
-                        <td>평타</td>
-                        <td th:text="${nomalAttact}"></td>
-                        <td th:text="${nomalAttackResult}"></td>
-                    </tr>
-                    <tr>
-                        <td>강평</td>
-                        <td>
-                            <p th:if="${passiveSkill != 0}" th:text="${passiveSkill}"></p>
-                            <p th:unless="${passiveSkill != 0}">계산 불필요</p>
-                        </td>
-                        <td>
-                            <p th:if="${passiveSkillResult != 0}" th:text="${passiveSkillResult}"></p>
-                            <p th:unless="${passiveSkillResult != 0}">계산 불필요</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>특수기</td>
-                        <td th:text="${activeSkill}"></td>
-                        <td th:text="${activeSkillResult}"></td>
-                    </tr>
-                    <tr>
-                        <td>궁</td>
-                        <td th:text="${ultSkill}"></td>
-                        <td th:text="${ultSkillResult}"></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="bottom-section">
-            <table class="summary-table">
-                <tr>
-                    <th>기준</th>
-                    <th>값</th>
-                </tr>
-                <tr>
-                    <td>평타</td>
-                    <td th:text="${normalAttackCount}"></td>
-                </tr>
-                <tr>
-                    <td>강평</td>
-                    <td th:text="${passiveSkillCount}"></td>
-                </tr>
-                <tr>
-                    <td>특수기</td>
-                    <td th:text="${activeSkillCount}"></td>
-                </tr>
-                <tr>
-                    <td>궁극기</td>
-                    <td th:text="${ultSkillCount}"></td>
-                </tr>
-            </table>
-        </div>
+            window.onload = function () {
+                const img = document.createElement('img');
+                img.src = `./asset/${fileNames[chrapicnum]}.webp`;
+                img.alt = fileNames[chrapicnum];
+                document.getElementById('imageContainer').appendChild(img);
+            }
+        </script>
+
+<p class="charaname" th:text="${charaname}"></p>
+        <table>
+            <tr>
+                <td>
+                    <div id="imageContainer"></div>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>적용 전</th>
+                            <th>적용 후</th>
+                        </tr>
+                        <tr>
+                            <td>평타: </td>
+                            <td>
+                                <p th:text="${nomalAttact}"></p>
+                            </td>
+                            <td>
+                                <p th:text="${nomalAttackResult}"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>강평:</td>
+                            <td>
+                                <p th:if="${passiveSkill != 0}" th:text="${passiveSkill}"></p>
+                                <p th:unless="${passiveSkill != 0}">X</p>
+                            </td>
+                            <td>
+                                <p th:if="${passiveSkillResult != 0}" th:text="${passiveSkillResult}"></p>
+                                <p th:unless="${passiveSkillResult != 0}">X</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>특수기: </td>
+                            <td>
+                                <p th:text="${activeSkill}"></p>
+                            </td>
+                            <td>
+                                <p th:text="${activeSkillResult}"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>궁: </td>
+                            <td>
+                                <p th:text="${ultSkill}"></p>
+                            </td>
+                            <td>
+                                <p th:text="${ultSkillResult}"></p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <th>30초 기준</th>
+                <th>발동 횟수</th>
+            </tr>
+            <tr>
+                <td>평타</td>
+                <td>
+                    <p th:text="${normalAttackCount}"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>강평</td>
+                <td>
+                    <p th:text="${passiveSkillCount}"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>특수기</td>
+                <td>
+                    <p th:text="${activeSkillCount}"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>궁극기</td>
+                <td>
+                    <p th:text="${ultSkillCount}"></p>
+                </td>
+            </tr>
+        </table>
+
+        <form action="dduda" method="post">
+            <button type="submit">돌아가기</button>
+        </form>
     </div>
-    <form action="dduda" method="post">
-        <button type="submit">돌아가기</button>
-    </form>
 </body>
 
 </html>

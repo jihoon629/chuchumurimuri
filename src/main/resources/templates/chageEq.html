@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>장비 정보 입력</title>
-    <link rel="stylesheet" href="./asset/chageEq.css">
+    <link rel="stylesheet" href="./asset/chageEq2.css">
     <script th:inline="javascript">
         function updateInputName(group) {
             const skillRadio = document.getElementById(`skillRadio${group}`);
@@ -43,40 +43,42 @@
 <body>
     
 
+    <div class="content">
 
 
     <div id="imageContainer"></div>
+
     <h2>장비 정보 입력</h2>
     <form method="post" action="/Result">
         <input type="hidden" name="skillSpeedSet" value=20>
-        <button type="submit">잡스증</button>
+        <button type="submit">잡 스충 (20%)</button>
     </form>
 
     <form method="post" action="/Result">
-        <input type="hidden" name="skillSpeedSet" value=16>
+        <input type="hidden" name="skillSpeedSet" value=12>
         <input type="hidden" name="atackSpeedSet" value=0>
-        <button type="submit">전덩 스충</button>
+        <button type="submit">스펙트럴 스피릿 (12%)</button>
     </form>
 
     <form method="post" action="/Result">
         <input type="hidden" name="skillSpeedSet" value=0>
-        <input type="hidden" name="atackSpeedSet" value=16>
-        <button type="submit">전당 공속</button>
+        <input type="hidden" name="atackSpeedSet" value=8>
+        <button type="submit">스펙트럴 블레이즈 (8%)</button>
     </form>
 
     <form method="post" action="/Result" class="maze">
-        <input type="hidden" name="skillSpeedSet" value=62>
-        <button type="submit"><img src="./asset/maze.png">메스충 6T</button>
+        <input type="hidden" name="skillSpeedSet" value=72>
+        <button type="submit">메이즈 세트 스충 6T (72%)</button>
     </form>
 
     <form method="post" action="/Result" class="maze">
-        <input type="hidden" name="SkillSpeedSet" value=72>
-        <button type="submit">메스충 7T</button>
+        <input type="hidden" name="SkillSpeedSet" value=76.2>
+        <button type="submit">메이즈 세트 스충 7T (76.2%)</button>
     </form>
 
     <form method="post" action="/Result" class="maze">
         <input type="hidden" name="AtackSpeedSet" value=20>
-        <button type="submit">메공속 6T</button>
+        <button type="submit">메이즈 세트 공속 6T (20%)</button>
     </form>
 
     <details>
@@ -288,6 +290,7 @@
             <button type="submit">계산</button>
         </form>
     </details>
+</div>
 </body>
 
 </html>
