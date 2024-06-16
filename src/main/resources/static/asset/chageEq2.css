@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #000; /* 배경을 검정색으로 설정 */
+    color: #fff; /* 텍스트를 흰색으로 설정 */
+}
+
+.content {
+    text-align: center;
+    background-color: #333; /* Dark gray background for content */
+    border: 2px solid #007bff; /* Blue border */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); /* 흰색 그림자 */
+    margin: 20px auto; /* 중앙 정렬을 위해 추가 */
+}
+
+form {
+    width: 90%;
+    margin-bottom: 20px;
+    background: #333; /* 배경을 어두운 회색으로 설정 */
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* 흰색 그림자 */
+    margin: 0 auto; /* 중앙 정렬을 위해 추가 */
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    color: #fff; /* 레이블 텍스트를 흰색으로 설정 */
+}
+
+input[type="number"],
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    background: #444; /* 배경을 중간 회색으로 설정 */
+    border: 1px solid #555; /* 경계를 어두운 회색으로 설정 */
+    color: #fff; /* 텍스트를 흰색으로 설정 */
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin: 0 auto; /* 중앙 정렬을 위해 추가 */
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+details {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #333; /* 배경을 어두운 회색으로 설정 */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* 흰색 그림자 */
+    color: #fff; /* 텍스트를 흰색으로 설정 */
+    margin: 0 auto; /* 중앙 정렬을 위해 추가 */
+}
+
+summary {
+    font-weight: bold;
+    cursor: pointer;
+    color: #fff; /* 요약 텍스트를 흰색으로 설정 */
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+details[open] summary::after {
+    content: "▲";
+    float: right;
+}
+
+details summary::after {
+    content: "▼";
+    float: right;
+}
