@@ -83,6 +83,7 @@ public class ServiecController {
             model.addAttribute("activeSkill", charaInfo.get(0).getActiveskill()*charaInfo.get(0).getNomalAttack());
             model.addAttribute("ultSkill", charaInfo.get(0).getUltSkill()*charaInfo.get(0).getNomalAttack());    
         }
+        model.addAttribute("charaname", charaInfo.get(0).getCharaName());
         model.addAttribute("nomalAttackResult", nomalAttackResult);
         model.addAttribute("passiveSkillResult", Math.round(passiveskillResult * 10) / 10.0);
         model.addAttribute("activeSkillResult", Math.round(activeSkillResult * 10) / 10.0);
