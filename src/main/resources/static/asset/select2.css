@@ -19,6 +19,7 @@ h1 {
 .class-container {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
     margin-bottom: 20px;
 }
 
@@ -27,7 +28,7 @@ h1 {
     color: #007bff; /* Blue text */
     border: 2px solid #007bff; /* Blue border */
     padding: 10px 20px;
-    margin: 0 10px;
+    margin: 10px; /* Adjusted margin to give space between buttons */
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
@@ -41,11 +42,10 @@ h1 {
 .character-table {
     margin: 20px auto;
     border-collapse: collapse;
-    width: 80%;
+    width: 100%; /* Adjusted to use full width */
 }
 
 .character-table td {
- 
     padding: 10px;
     text-align: center;
     color: #007bff; /* Blue text for table cells */
@@ -78,23 +78,23 @@ img {
 
 @media (max-width: 768px) {
     h1 {
-        font-size: 1.5em; /* Further adjust font size for very small screens */
+        font-size: 1.5em; /* Adjust font size for smaller screens */
     }
 
     .class-container {
-        flex-direction: column; /* Stack buttons vertically on very small screens */
+        flex-direction: column; /* Stack buttons vertically on smaller screens */
     }
 
     .class-button, button {
-        padding: 6px 12px; /* Further adjust padding for very small screens */
+        padding: 6px 12px; /* Adjust padding for smaller screens */
         font-size: 0.9em; /* Adjust font size for buttons */
     }
 
     .character-table {
-        width: 100%; /* Use full width on very small screens */
+        width: 100%; /* Use full width on smaller screens */
     }
 
     img {
-        width: 60px; /* Further adjust image size for very small screens */
+        width: 60px; /* Adjust image size for smaller screens */
     }
 }

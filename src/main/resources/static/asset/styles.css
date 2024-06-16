@@ -14,6 +14,9 @@ body {
     border: 2px solid #007bff; /* Blue border */
     padding: 20px;
     border-radius: 10px;
+    max-width: 90%; /* Added to make sure content doesn't overflow */
+    box-sizing: border-box; /* Ensure padding is included in width */
+    overflow-x: auto; /* Added to handle overflow on small screens */
 }
 
 .charaname {
@@ -26,7 +29,9 @@ body {
 table {
     margin: 20px auto;
     border-collapse: collapse;
-    width: 80%;
+    width: 100%; /* Adjusted to use full width */
+    max-width: 100%; /* Ensure table doesn't exceed the content width */
+    box-sizing: border-box; /* Ensure padding is included in width */
 }
 
 th, td {
@@ -63,7 +68,8 @@ button:hover {
 @media (max-width: 768px) {
     .content {
         padding: 15px;
-        width: 90%;
+        width: 100%; /* Ensure full width on mobile */
+        box-sizing: border-box;
     }
 
     .charaname {
@@ -72,7 +78,8 @@ button:hover {
     }
 
     table {
-        width: 100%;
+        width: 100%; /* Ensure table uses full width */
+        max-width: 100%; /* Ensure table doesn't exceed the content width */
     }
 
     th, td {
