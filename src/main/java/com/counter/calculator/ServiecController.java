@@ -45,14 +45,14 @@ public class ServiecController {
             return;
         }
 
-        double[] eqResult = skillMechanism.eqResult(eqInfo, 0);
+        double[] eqResult = skillMechanism.eqResult(eqInfo, 0,0);
 
         double nomalAttackResult = skillMechanism.nomalAttackResult(charaInfo, eqResult[1], 0);
         double passiveskillResult = skillMechanism.passiveskillResult(charaInfo, nomalAttackResult);
 
         double activeSkillResult;
         double ultSkillResult;
-        if (charaInfo.get(0).getCharaNum() < 98) {
+        if (charaInfo.get(0).getCharaNum() < 96) {
             activeSkillResult = skillMechanism.activeSkillResult(charaInfo, eqResult[0]);
             ultSkillResult = skillMechanism.ultSkillResult(charaInfo, eqResult[0]);
         } else {
@@ -72,13 +72,18 @@ public class ServiecController {
         model.addAttribute("activeSkillCount", dealtime[2]);
         model.addAttribute("ultSkillCount", dealtime[3]);
 
-        model.addAttribute("nomalAttact", Math.round(charaInfo.get(0).getNomalAttack() * 10) / 10.0);
-        model.addAttribute("passiveSkill",
-                Math.round(charaInfo.get(0).getPassiveskill() * charaInfo.get(0).getNomalAttack() * 10) / 10.0);
-        model.addAttribute("activeSkill", charaInfo.get(0).getActiveskill());
+        model.addAttribute("nomalAttact",charaInfo.get(0).getNomalAttack());
+        model.addAttribute("passiveSkill",Math.round(charaInfo.get(0).getPassiveskill() * charaInfo.get(0).getNomalAttack() * 10) / 10.0);
+        
+        if(charaInfo.get(0).getCharaNum() < 96) {
+            model.addAttribute("activeSkill", charaInfo.get(0).getActiveskill());
         model.addAttribute("ultSkill", charaInfo.get(0).getUltSkill());
 
-        model.addAttribute("nomalAttackResult", Math.round(nomalAttackResult * 10) / 10.0);
+        } else {
+            model.addAttribute("activeSkill", charaInfo.get(0).getActiveskill()*charaInfo.get(0).getNomalAttack());
+            model.addAttribute("ultSkill", charaInfo.get(0).getUltSkill()*charaInfo.get(0).getNomalAttack());    
+        }
+        model.addAttribute("nomalAttackResult", nomalAttackResult);
         model.addAttribute("passiveSkillResult", Math.round(passiveskillResult * 10) / 10.0);
         model.addAttribute("activeSkillResult", Math.round(activeSkillResult * 10) / 10.0);
         model.addAttribute("ultSkillResult", Math.round(ultSkillResult * 10) / 10.0);

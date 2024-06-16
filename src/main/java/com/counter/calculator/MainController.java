@@ -49,7 +49,7 @@ public class MainController {
     }
 
     @PostMapping("/dduda")
-    public String postMethodName(DtoChangeEq chageEq, DtoSelect sel) {
+    public String dddd(DtoChangeEq chageEq, DtoSelect sel) {
         return "redirect:/";
     }
 

@@ -17,28 +17,27 @@ public class ServiecCharaMecanism {
         double activeSkillCount = 0;
         double ultSkillCount = 0;
 
-        switch (charaInfo.get(0).getCharaNum()) {
-            case 1: {
-                double[] charaResults = charaName.YuMina(charaInfo, eqInfo, durationSeconds);
+        if (charaInfo.get(0).getCharaNum() < 96){
+            double[] charaResults = charaName.Default(charaInfo, eqInfo, durationSeconds);
+            normalAttackCount = charaResults[0];
+            passiveSkillCount = charaResults[1];
+            activeSkillCount = charaResults[2];
+            ultSkillCount = charaResults[3];
+            System.out.println(charaInfo.get(0).getCharaNum());
+            return new double[] { (int) normalAttackCount, (int) passiveSkillCount, (int) activeSkillCount,
+                (int) ultSkillCount };
+            } else {
+                double[] charaResults = charaName.Fury(charaInfo, eqInfo, durationSeconds);
                 normalAttackCount = charaResults[0];
                 passiveSkillCount = charaResults[1];
                 activeSkillCount = charaResults[2];
                 ultSkillCount = charaResults[3];
-                break;
-            }
-
-            default: {
-                double[] charaResults = charaName.Default(charaInfo, eqInfo, durationSeconds);
-                normalAttackCount = charaResults[0];
-                passiveSkillCount = charaResults[1];
-                activeSkillCount = charaResults[2];
-                ultSkillCount = charaResults[3];
-            }
-
-        }
+                System.out.println("Fury");
+                
 
         return new double[] { (int) normalAttackCount, (int) passiveSkillCount, (int) activeSkillCount,
                 (int) ultSkillCount };
     }
 
+}
 }

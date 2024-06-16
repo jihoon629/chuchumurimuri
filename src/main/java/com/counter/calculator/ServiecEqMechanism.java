@@ -33,6 +33,14 @@ public class ServiecEqMechanism {
         return  ultSkillResult; 
     }
 
+    public double FixedSkillResult(double fixedcooldown, double eqResult) {
+        double fixedcooldownresult=fixedcooldown / (1 + (eqResult * 0.01));
+       
+        return  fixedcooldownresult; 
+    }
+
+
+
     public double activeSkillResultFury(List<EntitySkill> charaInfo, double nomalAttackResult) {
         double activeSkillResultFury=charaInfo.get(0).getActiveskill() * nomalAttackResult;
         return  activeSkillResultFury;
@@ -43,13 +51,13 @@ public class ServiecEqMechanism {
         return ultSkillResultFury;
     }
 
-    public double[] eqResult(List<EntityEq> eqInfo,double extraSkillSpeed) {
+    public double[] eqResult(List<EntityEq> eqInfo,double extraSkillSpeed, double extraAttackSpeed) {
         double eqResultSkill = eqInfo.get(0).getSkillSpeedSet() + eqInfo.get(0).getSubSkill().getSkillSpeedHands()
                 + eqInfo.get(0).getSubSkill().getSkillSpeedCase() + eqInfo.get(0).getSubSkill().getSkillSpeedGear()
                 + eqInfo.get(0).getSubSkill().getSkillSpeedMovement()+extraSkillSpeed;
         double eqResultAttack = eqInfo.get(0).getAtackSpeedSet() + eqInfo.get(0).getSubAttack().getAtackSpeedHands()
                 + eqInfo.get(0).getSubAttack().getAtackSpeedCase() + eqInfo.get(0).getSubAttack().getAtackSpeedGear()
-                + eqInfo.get(0).getSubAttack().getAtackSpeedMovement();
+                + eqInfo.get(0).getSubAttack().getAtackSpeedMovement()+extraAttackSpeed;
         return new double[] { eqResultSkill, eqResultAttack };
     }
 
