@@ -76,3 +76,13 @@ img {
     border-radius: 10px;
 }
 
+.content {
+    text-align: center;
+    background-color: #333; /* Dark gray background for content */
+    border: 2px solid #007bff; /* Blue border */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90%; /* Ensure content doesn't overflow */
+    box-sizing: border-box; /* Ensure padding is included in width */
+    overflow-x: auto; /* Handle overflow on small screens */
+}
