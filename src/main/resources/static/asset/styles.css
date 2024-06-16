@@ -58,3 +58,30 @@ button:hover {
     background-color: #007bff; /* Blue background on hover */
     color: #000; /* Black text on hover */
 }
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .content {
+        padding: 15px;
+        width: 90%;
+    }
+
+    .charaname {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}

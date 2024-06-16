@@ -75,3 +75,26 @@ img {
     height: auto;
     border-radius: 10px;
 }
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5em; /* Further adjust font size for very small screens */
+    }
+
+    .class-container {
+        flex-direction: column; /* Stack buttons vertically on very small screens */
+    }
+
+    .class-button, button {
+        padding: 6px 12px; /* Further adjust padding for very small screens */
+        font-size: 0.9em; /* Adjust font size for buttons */
+    }
+
+    .character-table {
+        width: 100%; /* Use full width on very small screens */
+    }
+
+    img {
+        width: 60px; /* Further adjust image size for very small screens */
+    }
+}

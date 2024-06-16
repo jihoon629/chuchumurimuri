@@ -100,3 +100,45 @@ details summary::after {
     content: "▼";
     float: right;
 }
+
+.charaname {
+    font-size: 2em; /* Increase font size */
+    font-weight: bold; /* Make the text bold */
+    color: #007bff; /* Blue text */
+    margin-bottom: 20px; /* Add some space below */
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .content {
+        padding: 15px;
+        margin: 10px auto;
+    }
+
+    form {
+        padding: 10px;
+    }
+
+    input[type="number"],
+    button {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .charaname {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+
+    details {
+        padding: 8px;
+    }
+
+    label {
+        margin-top: 8px;
+    }
+}
