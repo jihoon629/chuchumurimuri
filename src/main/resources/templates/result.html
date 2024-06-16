@@ -4,59 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Character Information</title>
     <link rel="stylesheet" href="./asset/result.css">
-
 </head>
 
 <body>
     <script th:inline="javascript">
         let chrapicnum = [[${ charanum }]];
-        if(chrapicnum>97){
-            chrapicnum = chrapicnum-66;
-            
+        if(chrapicnum > 96) {
+            chrapicnum = chrapicnum - 66;
         }
-        let fileNames = ['설계미스', 'YuMiNa', 'YuNa', 'JooShiYoon', 'Horizon', 'Sigma', 'ChiFuyu', 'Eve', 'Kallen',
-            'LEESOOYEON', 'SEOYOON', 'MINISTRA', 'ANTONOV', 'REGINA', 'MAVKA',
-            'HILDE', 'NAYUBIN', 'REPLACERKING', 'EVOLVE001','JAKEWALKER', 'RAY', 'ECCLESIA',
-            'REPLACERQUEEN', 'AMYFIRSTWING', 'CURIAN', 'ROSARIALEFRIEDE', 'MORDRED',
-            'LEEJISOO', 'SHINJIA', 'LYUDMILA', 'CHRISTINABRECHT',
-            'ALICE', 'Shperd&Lurcher', 'KARIN'];
-
+        let fileNames = [
+            '설계미스', 'YuMiNa', 'YuNa', 'JooShiYoon', 'Horizon', 'Sigma', 'ChiFuyu', 'Eve', 'Kallen',
+            'LEESOOYEON', 'SEOYOON', 'MINISTRA', 'ANTONOV', 'REGINA', 'MAVKA', 'HILDE', 'NAYUBIN',
+            'REPLACERKING', 'EVOLVE001','JAKEWALKER', 'RAY', 'ECCLESIA', 'REPLACERQUEEN', 'AMYFIRSTWING',
+            'CURIAN', 'ROSARIALEFRIEDE', 'MORDRED', 'LEEJISOO', 'SHINJIA', 'LYUDMILA', 'CHRISTINABRECHT',
+            'ALICE', 'Shperd&Lurcher', 'KARIN'
+        ];
         window.onload = function () {
             const img = document.createElement('img');
             img.src = `./asset/${fileNames[chrapicnum]}.webp`;
             img.alt = fileNames[chrapicnum];
             document.getElementById('imageContainer').appendChild(img);
+            const name = document.createElement('h2');
+            name.textContent = fileNames[chrapicnum];
+            document.getElementById('imageContainer').prepend(name);
         }
-
     </script>
-    <table>
-        <tr>
-            <th></th>
-            <th>결과물</th>
-        </tr>
-        <tr>
-            <td>
-                <div id="imageContainer"></div>
-            </td>
-            <td>
-                <table>
+
+    <h1>Character Information</h1>
+    <div class="result-container">
+        <div class="top-section">
+            <div class="image-section" id="imageContainer"></div>
+            <div class="info-section">
+                <table class="attribute-table">
                     <tr>
-                        <td>이미지븜</td>
-                        <td>평타: </td>
-                        <td>
-                            <p th:text="${nomalAttact}"></p>
-                        </td>
-                        <td>
-                            <p th:text="${nomalAttackResult}"></p>
-                        </td>
+                        <th>Attribute</th>
+                        <th>Value</th>
+                        <th>Result</th>
+                    </tr>
                     <tr>
+                        <td>평타</td>
+                        <td th:text="${nomalAttact}"></td>
+                        <td th:text="${nomalAttackResult}"></td>
+                    </tr>
                     <tr>
-                        <td>이미지븜</td>
-                        <td>강평:</td>
+                        <td>강평</td>
                         <td>
-                            <p th:if="${passiveSkill != 0}" p th:text="${passiveSkill}"></p>
+                            <p th:if="${passiveSkill != 0}" th:text="${passiveSkill}"></p>
                             <p th:unless="${passiveSkill != 0}">계산 불필요</p>
                         </td>
                         <td>
@@ -64,83 +59,47 @@
                             <p th:unless="${passiveSkillResult != 0}">계산 불필요</p>
                         </td>
                     </tr>
-                    <td>이미지븜</td>
-                    <td>특수기: </td>
-                    <td>
-                        <p th:text="${activeSkill}">
-                    </td>
-                    <td>
-                        <p th:text="${activeSkillResult}"></p>
-                    </td>
                     <tr>
-                        <td>이미지븜</td>
-                        <td>궁: </td>
-                        <td>
-                            <p th:text="${ultSkill}"></p>
-                        </td>
-                        <td>
-                            <p th:text="${ultSkillResult}"></p>
-                        </td>
+                        <td>특수기</td>
+                        <td th:text="${activeSkill}"></td>
+                        <td th:text="${activeSkillResult}"></td>
+                    </tr>
+                    <tr>
+                        <td>궁</td>
+                        <td th:text="${ultSkill}"></td>
+                        <td th:text="${ultSkillResult}"></td>
                     </tr>
                 </table>
-            </td>
-        </tr>
-    </table>
-    30초 기준 <br>
-    평타
-<p th:text="${normalAttackCount}"></p>
-강평
-<p th:text="${passiveSkillCount}"></p>
-특수기
-<p th:text="${activeSkillCount}"></p>
-궁극기
-<p th:text="${ultSkillCount}"></p>
-
-
-
+            </div>
+        </div>
+        <div class="bottom-section">
+            <table class="summary-table">
+                <tr>
+                    <th>기준</th>
+                    <th>값</th>
+                </tr>
+                <tr>
+                    <td>평타</td>
+                    <td th:text="${normalAttackCount}"></td>
+                </tr>
+                <tr>
+                    <td>강평</td>
+                    <td th:text="${passiveSkillCount}"></td>
+                </tr>
+                <tr>
+                    <td>특수기</td>
+                    <td th:text="${activeSkillCount}"></td>
+                </tr>
+                <tr>
+                    <td>궁극기</td>
+                    <td th:text="${ultSkillCount}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
     <form action="dduda" method="post">
         <button type="submit">돌아가기</button>
     </form>
 </body>
 
 </html>
-
-
-
-
-
-<!-- <table border="1">
-    <tr>
-        <td>
-            
-            <img th:if="${charanum == 1}" src="./asset/YuMiNa.webp" alt="Image description">
-            <img th:if="${charanum == 2}" src="./asset/YuNa.webp" alt="윾나">
-            <img th:if="${charanum == 3}" src="./asset/JooShiYoon.webp" alt="주시윤">
-            <img th:if="${charanum == 4}" src="./asset/Horizon.webp" alt="깡우">
-            <img th:if="${charanum == 5}" src="./asset/Sigma.webp" alt="자딸미깡">
-            <img th:if="${charanum == 6}" src="./asset/ChiFuyu.webp" alt="치아가">
-            <img th:if="${charanum == 7}" src="./asset/Eve.webp" alt="">
-            <img th:if="${charanum == 8}" src="./asset/Shperd&Lurcher.webp" alt="">
-            <img th:if="${charanum == 9}" src="./asset/Kallen.webp" alt="">
-        </td>
-    </tr>
-
-    
-
-    <tr>
-        <td>평타: </p></td>
-       <td><p th:text="${nomalAttackResult}"></p></td>
-    </tr>
-    <tr>
-        <td>특수기:</td>
-       <td ><p th:text="${activeSkillResult}"></p> </td>
-    </tr>
-    <tr>
-        <td>궁: </p> </td>
-        <td><p th:text="${ultSkillResult}"></p></td>
-    </tr>
-</table>
-
-<form action="dduda" method="post">
-    <button type="submit">돌아가기</button>
-</form> -->
