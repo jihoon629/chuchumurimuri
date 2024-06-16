@@ -1,0 +1,100 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #000; /* Black background */
+    color: #007bff; /* Blue text */
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.class-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.class-button {
+    background-color: #333; /* Dark gray background */
+    color: #007bff; /* Blue text */
+    border: 2px solid #007bff; /* Blue border */
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.class-button:hover {
+    background-color: #007bff; /* Blue background on hover */
+    color: #000; /* Black text on hover */
+}
+
+.character-table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 80%;
+}
+
+.character-table td {
+ 
+    padding: 10px;
+    text-align: center;
+    color: #007bff; /* Blue text for table cells */
+}
+
+.character-table.hidden {
+    display: none;
+}
+
+button {
+    background-color: #333; /* Dark gray background for button */
+    color: #007bff; /* Blue text for button */
+    border: 2px solid #007bff; /* Blue border for button */
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: #007bff; /* Blue background on hover */
+    color: #000; /* Black text on hover */
+}
+
+img {
+    width: 100px;
+    height: auto;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5em; /* Further adjust font size for very small screens */
+    }
+
+    .class-container {
+        flex-direction: column; /* Stack buttons vertically on very small screens */
+    }
+
+    .class-button, button {
+        padding: 6px 12px; /* Further adjust padding for very small screens */
+        font-size: 0.9em; /* Adjust font size for buttons */
+    }
+
+    .character-table {
+        width: 100%; /* Use full width on very small screens */
+    }
+
+    img {
+        width: 60px; /* Further adjust image size for very small screens */
+    }
+}
