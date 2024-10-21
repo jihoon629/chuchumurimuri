@@ -1,0 +1,144 @@
+/* 기본 스타일 초기화 */
+body, html, ul, li, h1, h2, p {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* 헤더 스타일 */
+header {
+    background-color: #28a745;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.search-bar {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+/* 메인 배너 스타일 */
+.main-banner {
+    background: url('banner.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.main-banner h1 {
+    font-size: 36px;
+}
+
+.main-banner p {
+    font-size: 18px;
+}
+
+.btn-primary {
+    background-color: #ffc107;
+    color: #333;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    display: inline-block;
+}
+
+/* 추천 상품 섹션 */
+.recommended-products {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 200px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product-card img {
+    width: 100%;          /* 카드의 너비에 맞게 이미지 크기 조정 */
+    height: auto;         /* 이미지의 비율을 유지하면서 높이 조정 */
+    object-fit: cover;    /* 이미지가 잘리는 것을 방지하고, 카드에 맞게 조정 */
+    border-radius: 8px;   /* 이미지의 모서리를 부드럽게 */
+    max-height: 150px;    /* 이미지의 최대 높이를 설정하여 카드 크기를 벗어나지 않도록 제한 */
+}
+
+.product-card p {
+    margin: 10px 0 0 0;   /* 텍스트와 이미지 간격 조정 */
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 카테고리 섹션 */
+.categories {
+    padding: 20px;
+    text-align: center;
+}
+
+.category-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.category-item {
+    background-color: #28a745;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    width: 150px;
+    text-align: center;
+}
+
+/* 푸터 스타일 */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
